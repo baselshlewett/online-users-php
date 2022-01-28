@@ -9,7 +9,7 @@ Noothing special needed, just make sure you have the latest PHP version install 
 
 This project was designed with MVC in mind, inspired by architecture of modern frameworks.
 
-Entry file is index.php, which then initiates the Router class to handle routing.
+Entry file is index.php, which loads important files then initiates the Router class to handle routing.
 
 You can find regisetered routes in /library/routes.php
 
