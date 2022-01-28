@@ -13,7 +13,7 @@ if (!function_exists('dd')) {
 
 if (!function_exists('response')) {
     // function to make returning json easier not to have repeated code in the project
-    function json($data, $status = 204) {
+    function json($data, $status = 200) {
         http_response_code($status);
         header('Content-Type: application/json');
 
@@ -35,5 +35,13 @@ if (!function_exists('error')) {
         http_response_code($status);
 
         die(json($data, 200));
+    }
+}
+
+if (!function_exists('parse_json_request')) {
+    // simple function to parse JSON from body of requests like PUT, POST, DELETE
+    // can be extended to create a class and inject it into our router
+    function parse_json_request() {
+        return json_decode(file_get_contents("php://input"));
     }
 }

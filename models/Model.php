@@ -4,28 +4,56 @@ namespace Models;
 
 class Model 
 {
-    public static $data = [];
+    private $data = [];
     
-    protected static $table = "";
+    protected $table = "";
 
-    public static function load($filename): void
+    public function load(): void
     {
-        $file = file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/db/" . $filename . '.json');
-        self::$data = json_decode($file);
-        return;
+        $file = file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/db/" . $this->table . '.json');
+        $this->setData(json_decode($file));
     }
 
-    public static function update(): void
+    public function save(): bool
     {
-        return;
+        return file_put_contents($_SERVER['DOCUMENT_ROOT'] . "/db/" . $this->table . '.json', json_encode($this->data, JSON_PRETTY_PRINT));
     }
 
-    public static function find(string $field, string $value): mixed
+    public function find(string $field, string $value): mixed
     {
-        return array_filter(self::$data, function($arr) use ($field, $value) {
+        if (empty($this->data)) {
+            return null;
+        }
+
+        $filteredUsers = array_filter($this->data, function($arr) use ($field, $value) {
             if ($arr->$field === $value) {
                 return $arr;
             }   
         });
+
+        return !empty($filteredUsers) ? array_shift($filteredUsers) : null;
+    }
+
+    public function fill(object $data): void
+    {
+        if ($this->find('email', $data->email)) {
+            foreach ($this->data as $user) {
+                if ($user->email === $data->email) {
+                    $user = $data;
+                }
+            }
+        } else {
+            $this->data[] = $data;
+        }
+    }
+
+    public function setData($data): void
+    {
+        $this->data = $data;
+    }
+
+    public function getData(): mixed
+    {
+        return $this->data;
     }
 }

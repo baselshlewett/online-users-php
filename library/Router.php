@@ -19,6 +19,11 @@ class Router {
             return;
         }
 
+        if (!$this->_checkMethodAllowed()) {
+            error(405, "Method not allowed");
+            return;
+        }
+
         //check if controller exists, load it (url)
         $this->_loadController(self::$_routes[$this->_url]);
     }
@@ -94,9 +99,15 @@ class Router {
         return $controllerFunction;
     }
 
+    private function _checkMethodAllowed(): bool 
+    {
+        return self::$_routes[$this->_url]['method'] === $_SERVER['REQUEST_METHOD'];
+    }
+
     private function _getUrl(): void
     {
-        $url = rtrim($_SERVER['REQUEST_URI'], '/');
+        $baseUrl = strtok($_SERVER["REQUEST_URI"], '?');
+        $url = rtrim($baseUrl, '/');
         $url = filter_var($url, FILTER_SANITIZE_URL);
         $this->_url = empty($url) ? '/' : $url;
         return;
@@ -108,7 +119,7 @@ class Router {
         $controllerFunction = $controllerArr['function'];
         $controller = new $controllerString();
 
-        $controller->{$controllerFunction}();
+        $controller->{$controllerFunction}(parse_json_request());
 
         return;
     }

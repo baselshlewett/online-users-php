@@ -1,0 +1,57 @@
+[
+    {
+        "_id": "1",
+        "name": "Basel Shlewett",
+        "email": "basel.shlewett@gmail.com",
+        "entry_time": "12:00:00",
+        "left_time": "13:00:00",
+        "updated_at": "13:00:00",
+        "ip_adress": "1.1.1.1",
+        "user_agent": "Chrome",
+        "visits": "0"
+    },
+    {
+        "_id": "2",
+        "name": "John Doe",
+        "email": "john.doe@example.com",
+        "entry_time": "12:00:00",
+        "left_time": "13:00:00",
+        "updated_at": "13:00:00",
+        "ip_adress": "1.1.1.1",
+        "user_agent": "Chrome",
+        "visits": "0"
+    },
+    {
+        "_id": "3",
+        "name": "Test User 1",
+        "email": "test1@example.com",
+        "entry_time": "12:00:00",
+        "left_time": "13:00:00",
+        "updated_at": "13:00:00",
+        "ip_adress": "1.1.1.1",
+        "user_agent": "Chrome",
+        "visits": "0"
+    },
+    {
+        "_id": "4",
+        "name": "Test User 2",
+        "email": "test2@example.com",
+        "entry_time": "12:00:00",
+        "left_time": "13:00:00",
+        "updated_at": "13:00:00",
+        "ip_adress": "1.1.1.1",
+        "user_agent": "Chrome",
+        "visits": "0"
+    },
+    {
+        "_id": "5",
+        "name": "Test User 3",
+        "email": "test3@example.com",
+        "entry_time": "12:00:00",
+        "left_time": "13:00:00",
+        "updated_at": "13:00:00",
+        "ip_adress": "1.1.1.1",
+        "user_agent": "Chrome",
+        "visits": "0"
+    }
+]
