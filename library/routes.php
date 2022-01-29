@@ -1,6 +1,6 @@
 <?php 
 
-use \Library\Router;
+use Library\Router;
 
 Router::get('/', 'indexController@index');
 Router::get('/user', 'UserController@get');

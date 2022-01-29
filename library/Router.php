@@ -3,29 +3,29 @@
 namespace Library;
 
 class Router {
-    private $_url = null;
+    private static $_url = null;
 
     private static $_routes = [];
     
     function __construct() {}
 
-    public function init(): void
+    public static function init(): void
     {
         // prepares request url
-        $this->_getUrl();
-        dd([self::$_routes, $this->_url]);
-        if (empty(self::$_routes[$this->_url])) {
+        self::_getUrl();
+
+        if (empty(self::$_routes[self::$_url])) {
             error(404, "Route not found");
             return;
         }
 
-        if (!$this->_checkMethodAllowed()) {
+        if (!self::_checkMethodAllowed()) {
             error(405, "Method not allowed");
             return;
         }
 
         //check if controller exists, load it (url)
-        $this->_loadController(self::$_routes[$this->_url]);
+        self::_loadController(self::$_routes[self::$_url]);
     }
 
     public static function get(string $route, string $controller): void
@@ -99,21 +99,21 @@ class Router {
         return $controllerFunction;
     }
 
-    private function _checkMethodAllowed(): bool 
+    private static function _checkMethodAllowed(): bool 
     {
-        return self::$_routes[$this->_url]['method'] === $_SERVER['REQUEST_METHOD'];
+        return self::$_routes[self::$_url]['method'] === $_SERVER['REQUEST_METHOD'];
     }
 
-    private function _getUrl(): void
+    private static function _getUrl(): void
     {
         $baseUrl = strtok($_SERVER["REQUEST_URI"], '?');
         $url = rtrim($baseUrl, '/');
         $url = filter_var($url, FILTER_SANITIZE_URL);
-        $this->_url = empty($url) ? '/' : $url;
+        self::$_url = empty($url) ? '/' : $url;
         return;
     }
 
-    private function _loadController(array $controllerArr): void
+    private static function _loadController(array $controllerArr): void
     {
         $controllerString = "\\Controllers\\" . $controllerArr['controller'];
         $controllerFunction = $controllerArr['function'];

@@ -10,5 +10,4 @@ require_once 'library/routes.php';
 
 use Library\Router;
 
-$router = new Router();
-$router->init();
+Router::init();
