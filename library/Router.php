@@ -88,6 +88,7 @@ class Router {
         $controllerName = $controllerFunction[0];
         $functionName = $controllerFunction[1];
 
+
         return $controllerFunction;
     }
 
@@ -107,10 +108,7 @@ class Router {
 
     private static function _loadController(array $controllerArr): void
     {
-        
-        $controllerString = "Controllers\\" . $controllerArr['controller'];
-        $r = new \ReflectionClass($controllerString);
-        dd($r->getName());
+        $controllerString = "\\Controllers\\" . $controllerArr['controller'];
         $controllerFunction = $controllerArr['function'];
         $controller = new $controllerString();
 

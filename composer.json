@@ -2,8 +2,8 @@
     "autoload": {
         "psr-4": {
             "Library\\": "library/",
-            "Controllers\\": "Controllers/",
-            "Models\\": "Models/"
+            "Controllers\\": "controllers/",
+            "Models\\": "models/"
         }
     }
 }
