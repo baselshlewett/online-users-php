@@ -7,7 +7,3 @@ require __DIR__.'/vendor/autoload.php';
 // load important files
 require_once 'library/helpers.php';
 require_once 'library/routes.php';
-
-use Library\Router;
-
-Router::init();
