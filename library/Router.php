@@ -13,7 +13,7 @@ class Router {
     {
         // prepares request url
         self::_getUrl();
-        dd([self::$_routes, self::$_url]);
+
         if (empty(self::$_routes[self::$_url])) {
             error(404, "Route not found");
             return;
@@ -87,7 +87,7 @@ class Router {
 
         $controllerName = $controllerFunction[0];
         $functionName = $controllerFunction[1];
-
+        dd(class_exists("\\Controllers\\" . $controllerName));
         if (!class_exists("\\Controllers\\" . $controllerName)) {
             return false;
         }
