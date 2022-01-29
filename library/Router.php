@@ -108,7 +108,7 @@ class Router {
     private static function _loadController(array $controllerArr): void
     {
         
-        $controllerString = "\\Controllers\\" . $controllerArr['controller'];
+        $controllerString = "Controllers\\" . $controllerArr['controller'];
         $r = new \ReflectionClass($controllerString);
         dd($r->getName());
         $controllerFunction = $controllerArr['function'];
