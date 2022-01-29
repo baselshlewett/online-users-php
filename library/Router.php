@@ -87,7 +87,7 @@ class Router {
 
         $controllerName = $controllerFunction[0];
         $functionName = $controllerFunction[1];
-        dd(class_exists("\\Controllers\\" . $controllerName));
+        dd(class_exists('\Controllers\\' . $controllerName));
         if (!class_exists("\\Controllers\\" . $controllerName)) {
             return false;
         }
