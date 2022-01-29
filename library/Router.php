@@ -13,7 +13,7 @@ class Router {
     {
         // prepares request url
         $this->_getUrl();
-        
+        dd($this->_url);
         if (empty(self::$_routes[$this->_url])) {
             error(404, "Route not found");
             return;
