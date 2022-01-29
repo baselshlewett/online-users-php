@@ -21,7 +21,7 @@ class UserController extends Controller
         }
 
         // TODO: Move this to a validator class
-        if (empty($name)) {
+        if (empty($request->name)) {
             return json(["status" => 404, "message" => "invalid-name"]);
         } else {
             $name = $request->name;
@@ -50,7 +50,7 @@ class UserController extends Controller
         $userModel->fill($user);
         $userModel->save();
 
-        return json($userModel->getData());
+        return json($user);
     }
 
     public function logout(object $request): mixed
@@ -96,8 +96,8 @@ class UserController extends Controller
     public function online(): mixed
     {
         $userModel = new User();
-
-        return json($userModel->findAll('is_online', 1));
+        // dd(array_values($userModel->findAll('is_online', 1)));
+        return json(array_values($userModel->findAll('is_online', 1)));
     }
 
     public function updateOnline(object $request): mixed 
