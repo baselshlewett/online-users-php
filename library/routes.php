@@ -9,7 +9,7 @@ Router::post('/logout', 'UserController@logout');
 Router::get('/online', 'UserController@online');
 Router::put('/update-online', 'UserController@updateOnline');
 
-Router::init();
+// Router::init();
 
 use Controllers\UserController;
 
