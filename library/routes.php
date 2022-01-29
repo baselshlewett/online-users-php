@@ -2,11 +2,11 @@
 
 use Library\Router;
 
-Router::get('/', 'indexController@index');
-Router::get('/user', 'UserController@get');
-Router::post('/login', 'UserController@login');
-Router::post('/logout', 'UserController@logout');
-Router::get('/online', 'UserController@online');
-Router::put('/update-online', 'UserController@updateOnline');
+Router::get('/api', 'indexController@index');
+Router::get('/api/user', 'UserController@get');
+Router::post('/api/login', 'UserController@login');
+Router::post('/api/logout', 'UserController@logout');
+Router::get('/api/online', 'UserController@online');
+Router::put('/api/update-online', 'UserController@updateOnline');
 
 Router::init();
